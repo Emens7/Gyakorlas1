@@ -1,0 +1,45 @@
+<div class="container">
+  <div *ngIf="product$ | async as product" class="card">
+  <form #pForm="ngForm" (ngSubmit)="onUpdate(product)">
+    <div class="text-center padding">
+      <h2>Edit product</h2>
+    </div>
+    <div class="form-group row d-flex flex-row justify-content-center">
+      <div class="form-group col-md-6">
+        <label for="name" class="form-label col-lg-12">Name:</label>
+        <input [(ngModel)]="product.name" name="name" type="text" class="form-control col-lg-12"
+        id="name" required pattern="^[A-Űa-ű0-9\.\- ]{5,}$">
+        <div [hidden]="pForm.controls?.name?.valid" class="error-message">
+          Wrong data!
+        </div>
+      </div>
+    </div>
+    <div class="form-group row d-flex flex-row justify-content-center">
+      <div class="form-group col-md-6">
+        <label for="price" class="form-label col-lg-12">Price:</label>
+        <input [(ngModel)]="product.price" name="price" type="number" min="1"
+         class="form-control col-lg-12" id="price" required pattern="^[0-9\.]*$">
+         <div [hidden]="pForm.controls?.price?.valid" class="error-message">
+          Wrong data!
+        </div>
+      </div>
+    </div>
+    <div class="form-group row d-flex flex-row justify-content-center">
+      <div class="form-group col-md-6">
+        <label for="category" class="form-label col-lg-12">Category:</label>
+        <input [(ngModel)]="product.category" name="category" type="text"
+         class="form-control col-lg-12" id="category" required pattern="^[A-Űa-ű0-9\.\- ]{5,}$">
+         <div [hidden]="pForm.controls?.category?.valid" class="error-message">
+          Wrong data!
+        </div>
+      </div>
+    </div>
+    <div class="form-group row d-flex flex-row justify-content-center">
+      <div class="form-group col-md-6">
+      <button type="submit" [disabled]="pForm.invalid" class="btn btn-success btn-block fa fa-save"> Edit product</button>
+      </div>
+    </div>
+  </form>
+</div>
+</div>
+

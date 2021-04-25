@@ -1,0 +1,14 @@
+.button-add {
+  margin: 2rem;
+}
+
+.filter {
+  margin: 2rem;
+}
+
+.sort {
+  cursor: pointer;
+  &:hover {
+    background-color: white;
+  }
+}

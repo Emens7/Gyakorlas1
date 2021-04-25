@@ -1,0 +1,44 @@
+<div class="container">
+  <div class="card">
+  <form #cForm="ngForm" (ngSubmit)="onCreate(productAdd)">
+    <div class="text-center padding">
+      <h2>Add product</h2>
+    </div>
+    <div class="form-group row d-flex flex-row justify-content-center">
+      <div class="form-group col-md-6">
+        <label for="name" class="form-label col-lg-12">Name:</label>
+        <input [(ngModel)]="productAdd.name" name="name" type="text"
+         class="form-control col-lg-12" id="name" required>
+         <div [hidden]="cForm.controls.name?.valid || cForm.controls.name?.pristine " class="error-message">
+          Name is required.
+        </div>
+      </div>
+    </div>
+    <div class="form-group row d-flex flex-row justify-content-center">
+      <div class="form-group col-md-6">
+        <label for="price" class="form-label col-lg-12">Price:</label>
+        <input [(ngModel)]="productAdd.price" name="price" type="number" min="1"
+         class="form-control col-lg-12" id="price" required>
+         <div [hidden]="cForm.controls.price?.valid || cForm.controls.price?.pristine " class="error-message">
+          Price is required.
+        </div>
+      </div>
+    </div>
+    <div class="form-group row d-flex flex-row justify-content-center">
+      <div class="form-group col-md-6">
+        <label for="category" class="form-label col-lg-12">Category:</label>
+        <input [(ngModel)]="productAdd.category" name="category" type="text"
+         class="form-control col-lg-12" id="category" required>
+         <div [hidden]="cForm.controls.category?.valid || cForm.controls.category?.pristine " class="error-message">
+          Category is required.
+        </div>
+      </div>
+    </div>
+    <div class="form-group row d-flex flex-row justify-content-center">
+      <div class="form-group col-md-6">
+      <button type="submit" [disabled]="cForm.invalid" class="btn btn-success btn-block fa fa-plus"> Add product</button>
+      </div>
+    </div>
+  </form>
+</div>
+</div>

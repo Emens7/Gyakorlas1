@@ -1,0 +1,37 @@
+<div class="row">
+  <div class="col-12">
+    <div class="button-add">
+      <button routerLink="/add" class="btn btn-success btn-block fa fa-plus"> Create product</button>
+    <div class="filter col-md-4">
+    <input (keyup)="onFilter($event)" type="text" class="form-control mb-4"
+     placeholder="Filter by name">
+    </div>
+    <table class="table table-striped">
+      <thead class="table-warning">
+        <tr>
+          <th scope="col" (click)="onOrder('id')" class="sort">id</th>
+          <th (click)="onOrder('name')" class="sort">Name</th>
+          <th (click)="onOrder('price')" class="sort">Price</th>
+          <th (click)="onOrder('category')" class="sort">Category</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of list$ | async | filter:keyWord | sort:key">
+          <th scope="row">{{product.id}}</th>
+          <td>{{product.name}}</td>
+          <td>{{product.price}}</td>
+          <td>{{product.category}}</td>
+          <td >
+            <div class="btn-group">
+            <button [routerLink]="['editor', product.id]" class="btn btn-primary fa fa-pencil"></button>
+            <button (click)="onDelete(product)" class="btn btn-danger fa fa-trash"></button>
+            </div>
+          </td>
+
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+</div>
